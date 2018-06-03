@@ -3,10 +3,13 @@ FROM node:8
 WORKDIR /usr/src/app
 
 COPY package*.json ./
+COPY .babelrc ./
+
+COPY server ./
 
 RUN npm install
 
-COPY server /usr/src/app
+RUN npm run build
 
 EXPOSE 8080
 
